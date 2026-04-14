@@ -5,6 +5,7 @@ import { ArrowLeft, Lock, ExternalLink } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getCaseStudyBySlug } from "@/lib/case-studies";
 import TikTokEmbed from "@/components/TikTokEmbed";
+import ScrollPaywall from "@/components/ScrollPaywall";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -40,8 +41,9 @@ export default async function CaseStudyPage({ params }: Props) {
   const screenshotInsertIndex = Math.min(4, study.content.length - 1);
 
   return (
-    <section className="pt-24 pb-20 bg-white">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pt-8">
+    <section className="pt-20 sm:pt-24 pb-20 bg-white">
+      <ScrollPaywall />
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pt-4 sm:pt-8">
         {/* Back */}
         <Link
           href="/case-studies"

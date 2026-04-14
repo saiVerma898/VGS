@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FirebaseAnalytics from "@/components/FirebaseAnalytics";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -21,6 +22,7 @@ export const metadata: Metadata = {
   title: "Viral Growth Strategy | The Intelligence Platform for Organic Growth",
   description:
     "Discover how top apps go viral organically. Case studies, competitor intelligence, viral formats, and growth strategies — delivered daily to 30,000+ marketers.",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
 };
 
 export default function RootLayout({
@@ -34,10 +36,12 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <FirebaseAnalytics />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <AuthProvider>
+          <FirebaseAnalytics />
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

@@ -5,9 +5,9 @@ import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="pt-24 pb-0 bg-white">
+    <section className="pt-20 sm:pt-24 pb-0 bg-white">
       {/* Top section */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6 sm:pt-12 pb-10 sm:pb-16">
         <div className="max-w-4xl">
           {/* Kicker */}
           <div className="flex items-center gap-2 mb-6">

@@ -15,8 +15,8 @@ export default async function CaseStudiesPage() {
   const caseStudies = await getAllCaseStudies();
 
   return (
-    <section className="pt-24 pb-20 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
+    <section className="pt-20 sm:pt-24 pb-20 bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4 sm:pt-8">
         {/* Header */}
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-4">
