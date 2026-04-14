@@ -2,25 +2,109 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a0a0a;
+  --accent: #0a0a0a;
+  --accent-light: #0a0a0a;
+  --card-bg: #f7f7f5;
+  --card-border: #e5e5e0;
+  --muted: #6b6b6b;
+  --success: #0a7c42;
+  --highlight: #ff3b30;
+  --cream: #faf9f6;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-muted: var(--muted);
+  --color-success: var(--success);
+  --color-highlight: var(--highlight);
+  --color-cream: var(--cream);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 640px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Editorial serif heading utility */
+.font-editorial {
+  font-family: var(--font-serif), Georgia, 'Times New Roman', serif;
+}
+
+/* Red accent bar used Bloomberg-style */
+.red-bar {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: var(--highlight);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Thin rule dividers */
+.rule {
+  border: none;
+  border-top: 1px solid var(--card-border);
+}
+
+.rule-thick {
+  border: none;
+  border-top: 3px solid var(--foreground);
+}
+
+/* Selection */
+::selection {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+/* Custom scrollbar - minimal */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
+
+/* Link underline animation */
+.link-underline {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.3s ease;
+}
+.link-underline:hover {
+  background-size: 100% 1px;
 }

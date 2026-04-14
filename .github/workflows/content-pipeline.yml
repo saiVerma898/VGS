@@ -1,0 +1,33 @@
+name: Content Pipeline
+
+on:
+  schedule:
+    - cron: '0 10 * * *'  # 10 AM UTC daily
+    - cron: '0 18 * * *'  # 6 PM UTC daily
+  workflow_dispatch: {}    # manual trigger
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Run content pipeline
+        run: npx tsx src/scripts/run-pipeline.ts
+        env:
+          FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+          PIPELINE_SECRET: ${{ secrets.PIPELINE_SECRET }}
+          SITE_URL: https://viralgrowthstrategy.com
