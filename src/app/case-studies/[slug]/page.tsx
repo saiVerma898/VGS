@@ -57,9 +57,9 @@ export default async function CaseStudyPage({ params }: Props) {
             <Image
               src={study.appIconUrl}
               alt={study.title}
-              width={72}
-              height={72}
-              className="rounded-2xl border border-card-border shrink-0 shadow-sm"
+              width={96}
+              height={96}
+              className="rounded-2xl border border-card-border shrink-0 shadow-md"
             />
           )}
           <div>
@@ -173,15 +173,15 @@ export default async function CaseStudyPage({ params }: Props) {
                         App Screenshots
                       </span>
                     </div>
-                    <div className="flex gap-3 overflow-x-auto pb-2 -mx-2 px-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {study.screenshotUrls.map((url, j) => (
                         <Image
                           key={j}
                           src={url}
                           alt={`${study.title} screenshot ${j + 1}`}
-                          width={180}
-                          height={390}
-                          className="rounded-xl border border-card-border shrink-0 shadow-sm"
+                          width={600}
+                          height={0}
+                          className="rounded-xl border border-card-border w-full h-auto shadow-sm"
                         />
                       ))}
                     </div>
