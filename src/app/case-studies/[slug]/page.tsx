@@ -149,9 +149,10 @@ export default async function CaseStudyPage({ params }: Props) {
                         TikTok Videos
                       </span>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-4">
                       {study.tiktokEmbeds
-                        .filter((e) => e.embedHtml || e.url)
+                        .filter((e) => e.embedHtml || e.thumbnailUrl || !e.url.includes("search"))
+                        .slice(0, 2)
                         .map((embed, j) => (
                           <TikTokEmbed
                             key={j}
