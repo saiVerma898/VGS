@@ -63,11 +63,16 @@ async function searchTikTokViaApify(appName: string): Promise<ApifyTikTokResult[
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        searchQueries: [`${appName} app`],
+        excludePinnedPosts: false,
+        maxProfilesPerQuery: 1,
         resultsPerPage: 5,
-        searchSection: "top",
+        searchQueries: [`${appName} app`],
+        shouldDownloadCovers: false,
+        shouldDownloadSlideshowImages: false,
+        shouldDownloadSubtitles: false,
+        shouldDownloadVideos: false,
       }),
-      signal: AbortSignal.timeout(60000), // Apify can take up to 60s
+      signal: AbortSignal.timeout(90000), // Apify can take up to 90s
     });
 
     if (!res.ok) {
